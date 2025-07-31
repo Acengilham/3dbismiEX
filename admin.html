@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1><i class="fas fa-cog"></i> Dashboard Admin</h1>
+            <p>Kelola produk dan kategori toko online Anda</p>
+        </header>
+
+        <main class="admin-main">
+            <section class="product-form">
+                <h2>Tambah/Edit Produk</h2>
+                <form id="productForm">
+                    <input type="hidden" id="productId">
+                    
+                    <div class="form-group">
+                        <label for="productTitle">Judul Produk</label>
+                        <input type="text" id="productTitle" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productDescription">Deskripsi Produk</label>
+                        <textarea id="productDescription" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productCategory">Kategori Produk</label>
+                        <select id="productCategory" required>
+                            <option value="">Pilih Kategori</option>
+                            <!-- Kategori akan diisi secara dinamis -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="shopeeLink">Link Shopee</label>
+                        <input type="url" id="shopeeLink" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="waNumber">Nomor WhatsApp</label>
+                        <input type="text" id="waNumber" placeholder="6281234567890" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Gambar Produk (Maksimal 5)</label>
+                        <div id="imageInputs">
+                            <div class="image-input">
+                                <input type="url" class="imageUrl" placeholder="https://example.com/image1.jpg">
+                                <button type="button" class="remove-image-btn"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <button type="button" id="addImageBtn" class="btn secondary-btn">
+                            <i class="fas fa-plus"></i> Tambah Gambar
+                        </button>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn primary-btn">
+                            <i class="fas fa-save"></i> Simpan Produk
+                        </button>
+                        <button type="button" id="resetFormBtn" class="btn danger-btn">
+                            <i class="fas fa-undo"></i> Reset Form
+                        </button>
+                    </div>
+                </form>
+            </section>
+            
+            <section class="product-list">
+                <h2>Daftar Produk</h2>
+                <div id="productList"></div>
+            </section>
+            
+            <section class="category-management">
+                <h2>Manajemen Kategori</h2>
+                <div class="form-group">
+                    <label for="newCategoryName">Nama Kategori Baru</label>
+                    <div class="category-input-group">
+                        <input type="text" id="newCategoryName" placeholder="Masukkan nama kategori">
+                        <button type="button" id="addCategoryBtn" class="btn primary-btn">
+                            <i class="fas fa-plus"></i> Tambah
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="category-list">
+                    <h3>Daftar Kategori</h3>
+                    <div id="categoryList"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
